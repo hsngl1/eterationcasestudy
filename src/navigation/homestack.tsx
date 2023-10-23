@@ -4,9 +4,11 @@ import Home from '../screens/home';
 import Detail from '../screens/detail';
 import { TouchableOpacity } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
+import { useNavigation } from '@react-navigation/native';
 const Stack = createStackNavigator();
 
 export function HomeStack() {
+  const nav = useNavigation();
   return (
     <Stack.Navigator screenOptions={{
       headerShown: false,
@@ -31,15 +33,16 @@ export function HomeStack() {
         name="DetailScreen" component={Detail}
         options={({ route }) => ({
           headerShown: true,
-          title: route.params.data.name,
+          title: route.params.product.name,
           headerStyle: {
             backgroundColor: 'rgba(42, 89, 254, 1)',
           },
-          headerLeft: (props) => {
-            <TouchableOpacity>
+          headerLeft: (props) => (
+            <TouchableOpacity onPress={() => {
+              nav.navigate("E-Market")
+            }}>
               <Icon name={'arrow-back-outline'} size={36} color={'#ffff'} />
-            </TouchableOpacity>;
-          },
+            </TouchableOpacity>),
           headerTitleStyle: {
             color: 'white',
             fontSize: 29,

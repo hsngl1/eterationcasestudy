@@ -2,8 +2,7 @@ import React from 'react'
 import { ProductState } from '../../store/ProductStore';
 import { Text, Card, Button, Icon } from '@rneui/themed';
 import { TouchableOpacity, View } from 'react-native';
-import { useAppDispatch } from '../../store/hooks';
-import { SetFavorite } from '../../store/FavoriteStore';
+
 type PropType = {
   item: ProductState,
   onFavorite: (item: ProductState) => void,
